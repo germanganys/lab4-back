@@ -9,6 +9,7 @@ import javax.ejb.Stateless;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Stateless
@@ -84,6 +85,11 @@ public class RestMain {
                 String x = root.getAsJsonObject().get("x").getAsString();
                 String y = root.getAsJsonObject().get("y").getAsString();
                 String r = root.getAsJsonObject().get("r").getAsString();
+
+                if (!Arrays.asList("1", "2", "3", "4").contains(r)) {
+                    throw new Exception("Invalid R value");
+                }
+
 
                 pointBean.addPoint(
                         Double.parseDouble(x),
