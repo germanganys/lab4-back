@@ -86,7 +86,7 @@ public class RestMain {
                 String y = root.getAsJsonObject().get("y").getAsString();
                 String r = root.getAsJsonObject().get("r").getAsString();
 
-                if (!Arrays.asList("1", "2", "3", "4").contains(r)) {
+                if (!Arrays.asList(1., 2., 3., 4.).contains(Double.parseDouble(r))) {
                     throw new Exception("Invalid R value");
                 }
 
