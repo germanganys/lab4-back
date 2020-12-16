@@ -90,7 +90,6 @@ public class RestMain {
                     throw new Exception("Invalid R value");
                 }
 
-
                 pointBean.addPoint(
                         Double.parseDouble(x),
                         Double.parseDouble(y),

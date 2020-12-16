@@ -26,7 +26,5 @@ public class PointBean {
         Database.pointEM.createQuery("delete from result_table").executeUpdate();
         Database.pointEM.flush();
         Database.pointEM.getTransaction().commit();
-
-
     }
 }
