@@ -72,11 +72,11 @@ public class Point {
     }
 
     public static Boolean calculate(Double x, Double y, Double r) {
-        if (x >= 0 && y >= 0 && y <= r / 2 && x <= r)
+        if (x >= 0 && y >= 0 && y <= -x/2 + r/2)
             return true;
-        else if (x <= 0 && y >= 0 && y <= r && y <= x + r)
+        else if (x <= 0 && y >= 0 && x*x + y*y <= r*r)
             return true;
-        else if (x >= 0 && y <= 0 && x*x + y*y <= r*r/4)
+        else if (x >= 0 && y <= 0 && x <= r/2 && y >= -r)
             return true;
         else
             return false;
