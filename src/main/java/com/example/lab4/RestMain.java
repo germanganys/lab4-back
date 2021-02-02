@@ -10,10 +10,9 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 @Stateless
-@Path("/api")
+@Path("/points")
 public class RestMain {
     @EJB
     private PointBean pointBean;
@@ -22,7 +21,7 @@ public class RestMain {
     private UserBean userBean;
 
     @POST
-    @Path("points/clear")
+    @Path("clear")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String clear(String s) {
@@ -45,7 +44,7 @@ public class RestMain {
     }
 
     @POST
-    @Path("points/get")
+    @Path("get")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String getPoints(String s) {
@@ -69,7 +68,7 @@ public class RestMain {
     }
 
     @POST
-    @Path("points/add")
+    @Path("add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public String addPoint(String s) {
