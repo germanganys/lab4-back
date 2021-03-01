@@ -5,7 +5,7 @@ import java.util.List;
 public class ResponseStructure {
     public static String statusOk = "ok";
     public static String statusFail = "failed";
-
+    public String username;
     public String status;
     public String key;
     public List<Point> data;

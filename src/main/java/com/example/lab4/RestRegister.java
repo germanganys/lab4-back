@@ -33,14 +33,13 @@ public class RestRegister {
 
             if (userBean.isRegistered(username)) {
                 resp.status = "failed";
-                return gson.toJson(resp, ResponseStructure.class);
-            }
-            else {
+            } else {
                 String password = root.getAsJsonObject().get("password").getAsString();
                 resp.status = "ok";
+                resp.username = username;
                 resp.key = userBean.register(username, password);
-                return gson.toJson(resp, ResponseStructure.class);
             }
+            return gson.toJson(resp, ResponseStructure.class);
         } catch (Exception e) {
             resp.status = "failed";
             return gson.toJson(resp, ResponseStructure.class);
@@ -60,9 +59,9 @@ public class RestRegister {
             String username = root.getAsJsonObject().get("username").getAsString();
             String password = root.getAsJsonObject().get("password").getAsString();
             resp.status = "ok";
+            resp.username = username;
             resp.key = userBean.login(username, password);
             return gson.toJson(resp, ResponseStructure.class);
-
         } catch (Exception e) {
             resp.status = "failed";
             return gson.toJson(resp, ResponseStructure.class);

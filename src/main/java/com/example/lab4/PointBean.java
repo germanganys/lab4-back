@@ -14,12 +14,12 @@ public class PointBean {
     }
 
     public List<Point> getPoints() {
-        return Database.pointEM.createQuery("select c from result4_table c").getResultList();
+        return Database.pointEM.createQuery("select c from results4_table c").getResultList();
     }
 
     public void clear() {
         Database.pointEM.getTransaction().begin();
-        Database.pointEM.createQuery("delete from result4_table").executeUpdate();
+        Database.pointEM.createQuery("delete from results4_table").executeUpdate();
         Database.pointEM.flush();
         Database.pointEM.getTransaction().commit();
     }
