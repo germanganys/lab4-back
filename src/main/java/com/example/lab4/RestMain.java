@@ -29,18 +29,18 @@ public class RestMain {
         ResponseStructure resp = new ResponseStructure();
         JsonElement root = new JsonParser().parse(s);
         String key = root.getAsJsonObject().get("key").getAsString();
-        if (userBean.isValidUser(key)) {
+        String username = userBean.isValidUser(key);
+        if (username != null) {
             try {
                 pointBean.clear();
                 resp.status = "ok";
             } catch (Exception e) {
                 resp.status = "failed";
             }
-            return gson.toJson(resp, ResponseStructure.class);
         } else {
             resp.status = "failed";
-            return gson.toJson(resp, ResponseStructure.class);
         }
+        return gson.toJson(resp, ResponseStructure.class);
     }
 
     @POST
@@ -53,18 +53,18 @@ public class RestMain {
 
         JsonElement root = new JsonParser().parse(s);
         String key = root.getAsJsonObject().get("key").getAsString();
+        String username = userBean.isValidUser(key);
 
-        if (userBean.isValidUser(key)) {
+        if (username != null) {
             try {
                 resp.data = pointBean.getPoints();
             } catch (Exception e) {
-                resp.data = new ArrayList<Point>();
+                resp.data = new ArrayList<>();
             }
-            return gson.toJson(resp, ResponseStructure.class);
         } else {
             resp.status = "failed";
-            return gson.toJson(resp, ResponseStructure.class);
         }
+        return gson.toJson(resp, ResponseStructure.class);
     }
 
     @POST
@@ -78,8 +78,9 @@ public class RestMain {
 
         JsonElement root = new JsonParser().parse(s);
         String key = root.getAsJsonObject().get("key").getAsString();
+        String username = userBean.isValidUser(key);
 
-        if (userBean.isValidUser(key)) {
+        if (username != null) {
             try {
                 String x = root.getAsJsonObject().get("x").getAsString();
                 String y = root.getAsJsonObject().get("y").getAsString();
@@ -92,7 +93,8 @@ public class RestMain {
                 pointBean.addPoint(
                         Double.parseDouble(x),
                         Double.parseDouble(y),
-                        Double.parseDouble(r)
+                        Double.parseDouble(r),
+                        username
                 );
                 resp.last_point = pointBean.getPoints().get(pointBean.getPoints().size() - 1);
                 resp.status = "ok";

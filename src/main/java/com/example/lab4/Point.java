@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "result_table")
+@Entity(name = "result4_table")
 public class Point {
 
     @Id
@@ -16,11 +16,13 @@ public class Point {
     private Double y;
     private Double r;
     private Boolean result;
+    private String username;
 
-    public Point(Double x, Double y, Double r, Boolean result) {
+    public Point(Double x, Double y, Double r, Boolean result, String username) {
         this.x = x;
         this.y = y;
         this.r = r;
+        this.username = username;
         this.result = result;
     }
 

@@ -11,10 +11,10 @@ import java.util.*;
 @Singleton
 public class UserBean {
 
-    private static Set<String> loggedInSecretKeys = new HashSet<>();
+    private static final Map<String, String> loggedInSecretKeys = new HashMap<>();
 
     private List<User> getRegistered() {
-        return Database.userEM.createQuery("select c from user_table c").getResultList();
+        return Database.userEM.createQuery("select c from users4_table c").getResultList();
     }
 
     public String register(String username, String password) throws NoSuchAlgorithmException {
@@ -28,7 +28,7 @@ public class UserBean {
 
         String secKey = new BigInteger(130, new SecureRandom()).toString(32);
 
-        loggedInSecretKeys.add(secKey);
+        loggedInSecretKeys.put(secKey, username);
 
         Database.userEM.getTransaction().begin();
         Database.userEM.persist(user);
@@ -37,8 +37,8 @@ public class UserBean {
         return secKey;
     }
 
-    public Boolean isValidUser(String secKey) {
-        return loggedInSecretKeys.contains(secKey);
+    public String isValidUser(String secKey) {
+        return loggedInSecretKeys.getOrDefault(secKey, null);
     }
 
     public String login(String username, String password) throws Exception {
@@ -51,7 +51,7 @@ public class UserBean {
             if (username.equals(user.getUsername()) &&
                 encodedPass.equals(user.getPasswordHash())) {
                 String secKey = new BigInteger(130, new SecureRandom()).toString(32);
-                loggedInSecretKeys.add(secKey);
+                loggedInSecretKeys.put(secKey, username);
                 return secKey;
             }
         }
@@ -68,6 +68,6 @@ public class UserBean {
     }
 
     public Boolean logout(String secretKey) {
-        return loggedInSecretKeys.remove(secretKey);
+        return loggedInSecretKeys.remove(secretKey) != null;
     }
 }
