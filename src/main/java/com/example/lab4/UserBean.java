@@ -14,7 +14,7 @@ public class UserBean {
     private static final Map<String, String> loggedInSecretKeys = new HashMap<>();
 
     private List<User> getRegistered() {
-        return Database.userEM.createQuery("select c from user4_table c").getResultList();
+        return Database.userEM.createQuery("select c from user4s_table c").getResultList();
     }
 
     public String register(String username, String password) throws NoSuchAlgorithmException {

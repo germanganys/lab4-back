@@ -10,8 +10,8 @@
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.jdbc.url"    value="jdbc:postgresql://pg:5432/postgres" />
-            <property name="javax.persistence.jdbc.user" value="s285315" />
-            <property name="javax.persistence.jdbc.password" value="pxq997" />
+            <property name="javax.persistence.jdbc.user" value="s286536" />
+            <property name="javax.persistence.jdbc.password" value="wzf777" />
             <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
             <property name="eclipselink.create-ddl-jdbc-file-name" value="createDDL_ddlGeneration.jdbc"/>
             <property name="eclipselink.drop-ddl-jdbc-file-name" value="dropDDL_ddlGeneration.jdbc"/>
@@ -26,8 +26,8 @@
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.jdbc.url"    value="jdbc:postgresql://pg:5432/postgres" />
-            <property name="javax.persistence.jdbc.user" value="s285315" />
-            <property name="javax.persistence.jdbc.password" value="pxq997" />
+            <property name="javax.persistence.jdbc.user" value="s286536" />
+            <property name="javax.persistence.jdbc.password" value="wzf777" />
             <property name="eclipselink.ddl-generation" value="create-or-extend-tables" />
             <property name="eclipselink.create-ddl-jdbc-file-name" value="createDDL_ddlGeneration1.jdbc"/>
             <property name="eclipselink.drop-ddl-jdbc-file-name" value="dropDDL_ddlGeneration1.jdbc"/>

@@ -32,7 +32,7 @@ public class RestMain {
         String username = userBean.isValidUser(key);
         if (username != null) {
             try {
-                pointBean.clear();
+                pointBean.clear(username);
                 resp.status = "ok";
             } catch (Exception e) {
                 resp.status = "failed";
@@ -57,7 +57,7 @@ public class RestMain {
 
         if (username != null) {
             try {
-                resp.data = pointBean.getPoints();
+                resp.data = pointBean.getPoints(username);
             } catch (Exception e) {
                 resp.data = new ArrayList<>();
             }
@@ -90,13 +90,12 @@ public class RestMain {
                     throw new Exception("Invalid R value");
                 }
 
-                pointBean.addPoint(
+                resp.last_point = pointBean.addPoint(
                         Double.parseDouble(x),
                         Double.parseDouble(y),
                         Double.parseDouble(r),
                         username
                 );
-                resp.last_point = pointBean.getPoints().get(pointBean.getPoints().size() - 1);
                 resp.status = "ok";
             } catch (Exception e) {
                 resp.status = "failed";
